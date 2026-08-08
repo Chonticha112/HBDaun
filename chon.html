@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday 🎂</title>
+
+<style>
+
+/* =========================
+   COLORS
+========================= */
+
+:root {
+    --purple: #928297;
+    --cream: #F8E8D3;
+    --coral: #F85F73;
+
+    --text: #514A52;
+    --white: #FFFDF9;
+}
+
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   BODY
+========================= */
+
+body {
+
+    margin: 0;
+
+    height: 100vh;
+
+    overflow: hidden;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-family:
+        "Segoe UI",
+        Tahoma,
+        sans-serif;
+
+    color: var(--text);
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(146,130,151,.25) 0 7%,
+            transparent 7.5%
+        ),
+
+        radial-gradient(
+            circle at 85% 75%,
+            rgba(248,95,115,.15) 0 8%,
+            transparent 8.5%
+        ),
+
+        linear-gradient(
+            135deg,
+            #F8E8D3,
+            #fffaf5
+        );
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.container {
+
+    width: 100%;
+
+    text-align: center;
+
+    padding: 30px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* =========================
+   CAKE
+========================= */
+
+.cake {
+
+    font-size: 82px;
+
+    margin-bottom: 10px;
+
+    animation:
+        cakeFloat 3s ease-in-out infinite;
+
+    filter:
+        drop-shadow(
+            0 8px 8px
+            rgba(80,60,70,.12)
+        );
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+h1 {
+
+    margin: 10px 0 8px;
+
+    font-size: 35px;
+
+    font-weight: 700;
+
+    color: var(--purple);
+
+    letter-spacing: .3px;
+}
+
+
+/* =========================
+   SUBTITLE
+========================= */
+
+.subtitle {
+
+    margin-bottom: 27px;
+
+    font-size: 16px;
+
+    color: #776B76;
+}
+
+
+/* =========================
+   OPEN BUTTON
+========================= */
+
+.open-button {
+
+    border: none;
+
+    padding:
+        14px 28px;
+
+    border-radius: 50px;
+
+    background:
+        var(--coral);
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 25px
+        rgba(248,95,115,.25);
+
+    transition:
+        transform .25s,
+        box-shadow .25s;
+}
+
+
+.open-button:hover {
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 14px 30px
+        rgba(248,95,115,.30);
+}
+
+
+.open-button:active {
+
+    transform:
+        scale(.96);
+}
+
+
+/* =========================
+   OVERLAY
+========================= */
+
+.overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: none;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+
+    background:
+        rgba(80,65,80,.30);
+
+    backdrop-filter:
+        blur(7px);
+
+    z-index: 10;
+}
+
+
+/* =========================
+   POPUP
+========================= */
+
+.popup {
+
+    width:
+        min(400px, 100%);
+
+    background:
+        var(--white);
+
+    border-radius:
+        28px;
+
+    padding:
+        38px 28px 32px;
+
+    text-align: center;
+
+    position: relative;
+
+    border:
+        2px solid var(--cream);
+
+    box-shadow:
+        0 25px 70px
+        rgba(80,65,80,.22);
+
+    animation:
+        popupIn .5s
+        cubic-bezier(.17,.67,.35,1.3);
+}
+
+
+/* =========================
+   TOP DECORATION
+========================= */
+
+.popup-top {
+
+    width: 52px;
+
+    height: 5px;
+
+    border-radius: 10px;
+
+    margin:
+        0 auto 22px;
+
+    background:
+        var(--coral);
+}
+
+
+/* =========================
+   POPUP TITLE
+========================= */
+
+.popup h2 {
+
+    margin:
+        0 0 20px;
+
+    font-size: 25px;
+
+    color:
+        var(--coral);
+
+    font-weight: 700;
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+.popup p {
+
+    margin: 0;
+
+    font-size: 15px;
+
+    line-height: 1.95;
+
+    color:
+        var(--text);
+}
+
+
+/* =========================
+   HIGHLIGHT
+========================= */
+
+.highlight {
+
+    color:
+        var(--purple);
+
+    font-weight: 600;
+}
+
+
+/* =========================
+   BIRTHDAY TEXT
+========================= */
+
+.birthday {
+
+    display: inline-block;
+
+    margin-top: 4px;
+
+    color:
+        var(--coral);
+
+    font-weight: 700;
+
+    font-size: 16px;
+}
+
+
+/* =========================
+   CLOSE BUTTON
+========================= */
+
+.close {
+
+    position: absolute;
+
+    top: 12px;
+
+    right: 15px;
+
+    width: 35px;
+
+    height: 35px;
+
+    padding: 0;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background:
+        transparent;
+
+    color:
+        var(--purple);
+
+    font-size: 25px;
+
+    line-height: 35px;
+
+    cursor: pointer;
+
+    box-shadow: none;
+
+    transition:
+        background .2s,
+        transform .2s;
+}
+
+
+.close:hover {
+
+    background:
+        var(--cream);
+
+    transform:
+        rotate(90deg);
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes cakeFloat {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-8px);
+
+    }
+}
+
+
+@keyframes popupIn {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            scale(.75)
+            translateY(25px);
+
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translateY(0);
+
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 480px) {
+
+    .container {
+        padding: 20px;
+    }
+
+    .cake {
+        font-size: 72px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    .subtitle {
+        font-size: 15px;
+    }
+
+    .popup {
+        padding:
+            35px 22px 28px;
+    }
+
+    .popup h2 {
+        font-size: 23px;
+    }
+
+    .popup p {
+        font-size: 14px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     MAIN PAGE
+========================= -->
+
+<div class="container">
+
+    <div class="cake">
+        🎂
+    </div>
+
+
+    <h1>
+        Happy Birthday 🎉
+    </h1>
+
+
+    <div class="subtitle">
+        สิ่งเล็กๆ จากหมาเด็กครับ :)
+    </div>
+
+
+    <button
+        class="open-button"
+        onclick="openPopup()">
+
+        💌 พี่อันเปิดดูหน่อยครับ
+
+    </button>
+
+</div>
+
+
+
+<!-- =========================
+     POPUP
+========================= -->
+
+<div
+    class="overlay"
+    id="popup"
+>
+
+
+    <div class="popup">
+
+
+        <!-- ปุ่มปิด -->
+
+        <button
+            class="close"
+            onclick="closePopup()">
+
+            ×
+
+        </button>
+
+
+        <!-- เส้นตกแต่ง -->
+
+        <div class="popup-top"></div>
+
+
+        <h2>
+            แอบอ่านนะ... มันเขิน 🎂
+        </h2>
+
+
+        <p>
+
+            ขอให้โลกใบนี้ใจดีกับพี่อันมากๆ นะครับ
+
+            <br>
+
+            ขอให้เหนื่อยน้อยลงในทุกๆ วัน
+            <br>
+
+            ได้กินของอร่อยๆ นอนหลับสบาย
+            <br>
+
+            และตั้งใจทำหน้าที่ของตัวเองให้ดีที่สุดนะ ✨
+
+            <br><br>
+
+            ขอให้มีความสุขมากๆ
+            <br>
+
+            ยิ้มเยอะๆ
+            <br>
+
+            ได้ทำในสิ่งที่ชอบ
+            <br>
+
+            และพบเจอแต่สิ่งดีๆ
+            ที่เข้ามาในชีวิต
+
+            <br><br>
+
+            <span class="highlight">
+
+                อยากให้พี่อันมีความสุขมากๆ
+                และประสบความสำเร็จในทุกๆ เรื่องนะครับ
+
+            </span>
+
+            <br>
+
+            ขอให้ปีนี้เป็นปีที่ดี
+            และใจดีกับพี่อันมากๆ นะ :)
+
+            <br><br>
+
+            <span class="birthday">
+
+                Happy Birthday 🎀
+
+            </span>
+
+        </p>
+
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+/* =========================
+   OPEN POPUP
+========================= */
+
+function openPopup() {
+
+    document
+        .getElementById("popup")
+        .style.display = "flex";
+
+}
+
+
+/* =========================
+   CLOSE POPUP
+========================= */
+
+function closePopup() {
+
+    document
+        .getElementById("popup")
+        .style.display = "none";
+
+}
+
+
+/* =========================
+   CLICK OUTSIDE
+========================= */
+
+document
+    .getElementById("popup")
+    .addEventListener(
+        "click",
+        function(event) {
+
+            if (
+                event.target === this
+            ) {
+
+                closePopup();
+
+            }
+
+        }
+    );
+
+
+/* =========================
+   ESC TO CLOSE
+========================= */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            closePopup();
+
+        }
+
+    }
+);
+
+</script>
+
+
+</body>
+</html>
